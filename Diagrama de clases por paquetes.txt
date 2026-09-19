@@ -1,0 +1,68 @@
+Diagrama de clases por paquetes 
+
+
+Paquete interfaces
+
+	IPedidoDAO
+
+	ISocketListener
+
+	IObserverPedido
+
+	Paquete model
+
+Usuario (Abstracta)
+
+	Administrador
+
+	PersonalAtencion
+
+	PersonalCocina
+
+	Rol
+
+	Mesa
+
+	Categoria
+
+	Producto
+
+	Pedido
+
+	DetallePedido
+
+	EstadoPedido
+
+	EstacionPreparacion
+
+	Pago
+
+Paquete view
+
+	VentanaBase (Abstracta)
+
+	MesaVentana
+
+	CocinaVentana
+
+	AdminVentana
+
+	Paquete controller
+
+	PedidoController
+
+	CocinaController
+
+Paquete net
+
+	ServidorSocket
+
+	ClientHandler
+
+	ClientSocketHandler
+
+Paquete dao
+
+	PedidoDAO
+
+	LoggerService
