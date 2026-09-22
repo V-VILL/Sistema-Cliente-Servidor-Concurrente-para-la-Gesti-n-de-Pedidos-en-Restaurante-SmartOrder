@@ -1,8 +1,15 @@
 # Sistema-Cliente-Servidor-Concurrente-para-la-Gesti-n-de-Pedidos-en-Restaurante-SmartOrder
 
 Proyecto desarrollado por 4 personas
-
-
+*-Pendiente-*
+//Pedidos DAO
+//Eliminar
+//Enlistar
+//Por ID
+//Hacer un DAO por modelo
+//Cambiar por Service por Controller
+//Realizar una carpeta de Network
+*----------------------------------*
 
 En vias de desarrollo
 
