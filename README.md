@@ -9,6 +9,7 @@ Proyecto desarrollado por 4 personas
 //Hacer un DAO por modelo
 //Cambiar por Service por Controller
 //Realizar una carpeta de Network
+//Realizar descripciones de como se relacionan las clases
 *----------------------------------*
 
 En vias de desarrollo
