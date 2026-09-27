@@ -1,0 +1,55 @@
+====================================================================
+           CAMBIOS Y CORRECCIONES REQUERIDAS PARA EL DIAGRAMA UML
+====================================================================
+
+1. PAQUETE DAO (PERSISTENCIA Y MÉTODOS COMPLETOS)
+--------------------------------------------------------------------
+- Actualizar IPedidoDAO y PedidoDAO para completar el CRUD:
+  + eliminar(idPedido: String): boolean
+  + obtenerPorId(idPedido: String): Pedido
+  + listarTodos(): List<Pedido>
+
+- Crear un DAO por cada clase del Modelo (para no recargar una sola clase):
+  * IProductoDAO / ProductoDAO (crear, actualizar, eliminar, obtenerPorId, listarTodos)
+  * IMesaDAO / MesaDAO (actualizarEstado, obtenerPorId, listarTodas)
+  * IPagoDAO / PagoDAO (registrarPago, obtenerPorPedido)
+  * IAuditoriaDAO / AuditoriaDAO (registrarEvento, registrarError)
+
+
+2. CAMBIO DE ESTRUCTURA: PAQUETE SERVICES (REEMPLAZA A INTERFACES)
+--------------------------------------------------------------------
+- Renombrar el paquete "Interfaces" a "Services".
+- Crear clases de servicio para manejar la lógica de negocio pesada:
+  * PedidoService (cálculos, validación de reglas de negocio)
+  * UsuarioService (autenticación, encriptación)
+  * MenuService (gestión de stock y categorías)
+- El flujo de la arquitectura debe quedar:
+  View -> Controller -> Services -> DAO -> Base de Datos
+
+
+3. NUEVO PAQUETE: NETWORK (RED)
+--------------------------------------------------------------------
+- Separar la lógica de comunicaciones del paquete DAO o raíz a "Network".
+- Clases que deben ir en este paquete:
+  * ClientSocketHandler (manejo de conexión socket cliente)
+  * ServerSocketHandler (servidor escuchando peticiones)
+  * ISocketListener (interfaz para eventos de red)
+
+
+4. NUEVO PAQUETE: CONCURRENCY (MULTIHILO)
+--------------------------------------------------------------------
+- Crear un paquete para la programación concurrente y manejo de múltiples pedidos:
+  * ClientWorker (implementa Runnable / Thread para atender a cada cliente en un hilo independiente)
+  * ThreadPoolManager (administra la piscina de hilos para no saturar el servidor)
+  * TaskScheduler (revisión periódica de red o tareas en segundo plano)
+
+
+5. NOTACIÓN Y SÍMBOLOS DENTRO DEL DIAGRAMA
+--------------------------------------------------------------------
+- Clases Abstractas: Poner en cursiva el nombre de "Usuario" y "VentanaBase" o agregar la etiqueta «abstract».
+- Interfaces: Las líneas que van desde la clase concreta a la interfaz deben ser LÍNEA PUNTEADA CON TRIÁNGULO BLANCO (--->).
+- Singleton: En SesionUsuario, el método "+ getInstancia(): SesionUsuario" debe ir SUBRAYADO por ser estático.
+- Composición/Agregación:
+  * Pedido con DetallePedido lleva Rombo Relleno (Negro) en el lado de Pedido.
+  * Categoria con Producto lleva Rombo Transparente (Vacío) en el lado de Categoria.
+====================================================================
